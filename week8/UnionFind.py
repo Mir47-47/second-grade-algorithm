@@ -13,15 +13,15 @@ def Union(ix, iy):
     x = Find_set(ix)
     y = Find_set(iy)
     if x.rank > y.rank:
-        y.parent = x
+        y.graph = x
     else:
-        x.parent = y
+        x.graph = y
         if x.rank == y.rank:
             y.rank = y.rank + 1
 
 def Find_set(x):
-    if x != x.parent:
-        x.parent = Find_set(x.parent)
+    if x != x.graph:
+        x.graph = Find_set(x.graph)
     return x.parent
 
 input_text = list(map(int, input().split()))
